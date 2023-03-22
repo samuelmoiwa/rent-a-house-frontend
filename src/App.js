@@ -1,8 +1,12 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import { Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+
 function App() {
   return (
-    <div className="App">
-      <h1 className="text-3xl font-bold underline"> hello world </h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
   );
 }
 
