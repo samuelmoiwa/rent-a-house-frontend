@@ -2,12 +2,16 @@
 import { configureStore, combineReducers, getDefaultMiddleware } from '@reduxjs/toolkit';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import logger from 'redux-logger';
-import authSlice from './auth/authSlice';
+import registerSlice from './auth/registerSlice';
+import loginSlice from './auth/loginSlice';
+import logoutSlice from './auth/logoutSlice';
 
 // root Reducer
 const rootReducer = combineReducers({
   // Add reducer here
-  auth: authSlice,
+  register: registerSlice,
+  login: loginSlice,
+  logout: logoutSlice,
 
 });
 

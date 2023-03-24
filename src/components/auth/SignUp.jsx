@@ -7,12 +7,12 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { LockClosedIcon } from '@heroicons/react/20/solid';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { signup } from '../../redux/auth/authSlice';
+import { NavLink } from 'react-router-dom';
+import { userRegister } from '../../redux/auth/registerSlice';
 
 export default function Signup() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const {
     register,
@@ -23,7 +23,8 @@ export default function Signup() {
   const [values, setValues] = useState({});
 
   const onSubmit = (data) => {
-    dispatch(signup(data, navigate));
+    const userData = { user: { email: data.email, password: data.password } };
+    dispatch(userRegister(userData));
   };
 
   return (

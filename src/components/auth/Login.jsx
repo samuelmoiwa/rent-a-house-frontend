@@ -1,15 +1,15 @@
+import React, { useState } from 'react';
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { LockClosedIcon } from '@heroicons/react/20/solid';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { signin } from '../../redux/auth/authSlice';
-import useToken from '../../redux/auth/useToken';
+import { NavLink } from 'react-router-dom';
+// import useToken from '../../redux/auth/useToken'; */
+import { userLogin } from '../../redux/auth/loginSlice';
 
 export default function Login() {
   const [user, setUser] = useState({});
@@ -19,8 +19,8 @@ export default function Login() {
   // const message = useSelector(allMessages);
 
   const dispatch = useDispatch();
-  const isTokenSet = useToken();
-  const navigate = useNavigate();
+  // const isTokenSet = useToken();
+  // const navigate = useNavigate();
 
   const handlechange = (e) => {
     const {
@@ -41,13 +41,16 @@ export default function Login() {
     // Validate form fields before dispatching signin action
     if (!user.email) setUsernameError('Email is required');
     if (!user.password) setPasswordError('Password is required');
-    if (user.email && user.password) dispatch(signin(user));
+    if (user.email && user.password){
+    const userData = { user: { email: user.email, password: user.password } };
+    console.log(userData);
+    dispatch(userLogin(userData))
+    }
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (isTokenSet) navigate('/');
-  }, [isTokenSet]);
-
+  }, [isTokenSet]); */
   return (
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8 mt-32">
@@ -105,7 +108,6 @@ export default function Login() {
             </div>
 
           </div>
-
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <input
