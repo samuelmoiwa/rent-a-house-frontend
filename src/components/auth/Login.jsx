@@ -8,19 +8,15 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { LockClosedIcon } from '@heroicons/react/20/solid';
 import { NavLink } from 'react-router-dom';
-// import useToken from '../../redux/auth/useToken'; */
 import { userLogin } from '../../redux/auth/loginSlice';
+import logo from '../../images/logo/logo.png';
 
 export default function Login() {
   const [user, setUser] = useState({});
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  // const status = useSelector(allStatus);
-  // const message = useSelector(allMessages);
 
   const dispatch = useDispatch();
-  // const isTokenSet = useToken();
-  // const navigate = useNavigate();
 
   const handlechange = (e) => {
     const {
@@ -34,32 +30,27 @@ export default function Login() {
     if (input === 'password') setPasswordError('');
   };
 
-  // const handleSignIn = () => dispatch(signin(user));
-
   const handleSubmit = (e) => {
     e.preventDefault();
     // Validate form fields before dispatching signin action
     if (!user.email) setUsernameError('Email is required');
     if (!user.password) setPasswordError('Password is required');
-    if (user.email && user.password){
-    const userData = { user: { email: user.email, password: user.password } };
-    console.log(userData);
-    dispatch(userLogin(userData))
+    if (user.email && user.password) {
+      const userData = { user: { email: user.email, password: user.password } };
+      console.log(userData);
+      dispatch(userLogin(userData));
     }
   };
 
-  /* useEffect(() => {
-    if (isTokenSet) navigate('/');
-  }, [isTokenSet]); */
   return (
     <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md space-y-8 mt-32">
+      <div className="w-full max-w-md space-y-8 mt-32 bg-gray-100 pt-10 pb-10 pl-5 pr-5 rounded-md shadow-md">
         <div className="w-auto ">
-          {/* <img
+          <img
             className="mx-auto h-40 w-auto mb-6"
             src={logo}
             alt="Your Company"
-          /> */}
+          />
           <h2 className="mt-0 text-center text-3xl font-bold tracking-tight text-gray-900">
             Login to get started
           </h2>
