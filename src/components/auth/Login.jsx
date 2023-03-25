@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 import { LockClosedIcon } from '@heroicons/react/20/solid';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { userLogin } from '../../redux/auth/loginSlice';
 import logo from '../../images/logo/logo.png';
 
@@ -15,8 +15,10 @@ export default function Login() {
   const [user, setUser] = useState({});
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [loginError, setLoginError] = useState('');
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handlechange = (e) => {
     const {
@@ -30,15 +32,19 @@ export default function Login() {
     if (input === 'password') setPasswordError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Validate form fields before dispatching signin action
     if (!user.email) setUsernameError('Email is required');
     if (!user.password) setPasswordError('Password is required');
     if (user.email && user.password) {
       const userData = { user: { email: user.email, password: user.password } };
-      console.log(userData);
-      dispatch(userLogin(userData));
+      try {
+        await dispatch(userLogin(userData));
+        navigate('/');
+      } catch (error) {
+        setLoginError('Invalid email or password');
+      }
     }
   };
 
@@ -97,8 +103,12 @@ export default function Login() {
                 <small className="text-danger">{passwordError}</small>
               )}
             </div>
-
           </div>
+
+          <div className="text-red-500">
+            {loginError && <div>{loginError}</div>}
+          </div>
+
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <input

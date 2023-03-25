@@ -7,13 +7,14 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { LockClosedIcon } from '@heroicons/react/20/solid';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { userRegister } from '../../redux/auth/registerSlice';
 import logo from '../../images/logo/logo.png';
 
 export default function Signup() {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [signUpError, setSignUpError] = useState('');
 
   const {
     register,
@@ -23,9 +24,18 @@ export default function Signup() {
 
   const [values, setValues] = useState({});
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const userData = { user: { email: data.email, password: data.password } };
-    dispatch(userRegister(userData));
+    try {
+      await dispatch(userRegister(userData));
+      navigate('/');
+    } catch (error) {
+      if (error.response && error.response.status === 422) {
+        setSignUpError('user already exists');
+      } else {
+        setSignUpError('Something went wrong. Please try again later.');
+      }
+    }
   };
 
   return (
@@ -106,8 +116,11 @@ export default function Signup() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="text-red-500">
+            {signUpError && <div>{signUpError}</div>}
+          </div>
 
+          <div className="flex items-center justify-between">
             <div className="text-sm">
               <NavLink
                 to="/login"
