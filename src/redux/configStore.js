@@ -5,6 +5,7 @@ import logger from 'redux-logger';
 import registerSlice from './auth/registerSlice';
 import loginSlice from './auth/loginSlice';
 import logoutSlice from './auth/logoutSlice';
+import addHouseSlice from './house/addHouseSlice';
 
 // root Reducer
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   register: registerSlice,
   login: loginSlice,
   logout: logoutSlice,
+  addHouse: addHouseSlice,
 
 });
 

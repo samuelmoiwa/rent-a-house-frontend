@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 
 const apiUrl = 'http://localhost:3000/api/v1/houses';
+const accessToken = localStorage.getItem('access_token');
 
 const initialState = {
   isLoading: false,
@@ -35,15 +36,17 @@ export const addHouse = (houseData) => async (dispatch) => {
     try {
         const response = await axios.post(apiUrl, houseData, {
             headers: {
-                'Content-Type': 'application/json',
-            }
+                'Content-Type': 'multipart/form-data',
+                Authorization: accessToken,
+            },
+            method: 'POST'
         })
         dispatch(addHouseSuccess());
       return response.data
         
     } catch (error) {
         dispatch(addHouseFail(error.response?.data?.errors || error.message));
-    throw error;       
+           
     }
 
 }
