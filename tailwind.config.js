@@ -6,12 +6,12 @@ module.exports = {
       colors: {
         primary: '#1E90FF',
         secondary: '#FF6347',
-        'theme-color': '#97BF0F',
-        'button-color': '#97BF0F',
-        'icon-color': '#576D0D',
-        'focus-color': '#81A30D',
-        'icon-hover-color': '#607711',
-        'button-hover-color': '#B9E623',
+        'theme-color': '#FF830E',
+        'button-color': '#FF830E',
+        'icon-color': '#C66202',
+        'focus-color': '#E87305',
+        'icon-hover-color': '#BE5D02',
+        'button-hover-color': '#FC8B21',
         'font-color': '#424242',
       },
       fontFamily: {

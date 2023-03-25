@@ -10,6 +10,7 @@ import { LockClosedIcon } from '@heroicons/react/20/solid';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { userLogin } from '../../redux/auth/loginSlice';
 import logo from '../../images/logo/logo.png';
+import authBackgroundImage from '../../images/auth_background_image.png';
 
 export default function Login() {
   const [user, setUser] = useState({});
@@ -49,8 +50,17 @@ export default function Login() {
   };
 
   return (
-    <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md space-y-8 mt-32 bg-gray-100 pt-10 pb-10 pl-5 pr-5 rounded-md shadow-md">
+    <div
+      className="flex min-h-full items-center
+      justify-center py-12 px-4 sm:px-6 lg:px-8
+      w-full h-screen bg-cover bg-no-repeat bg-center
+      align-middle"
+      style={{ backgroundImage: `url(${authBackgroundImage})` }}
+    >
+      <div className="
+        w-full max-w-md space-y-8 mt-32 bg-gray-100 pt-10 pb-10 pl-5 pr-5
+        rounded-md shadow-md bg-opacity-50"
+      >
         <div className="w-auto ">
           <img
             className="mx-auto h-40 w-auto mb-6"
