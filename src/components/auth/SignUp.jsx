@@ -78,9 +78,11 @@ export default function Signup() {
                 }`}
                 placeholder="User name"
               />
-              {errors.name && (
-              <small className="text-danger">Name is required</small>
-              )}
+              <div className="text-red-600">
+                {errors.name && (
+                <small className="text-danger">Name is required</small>
+                )}
+              </div>
             </div>
 
             <div>
@@ -100,11 +102,12 @@ export default function Signup() {
                 }`}
                 placeholder="Email address"
               />
-              {errors.email && (
-              <small className="text-danger">Invalid email address</small>
-              )}
+              <div className="text-red-600">
+                {errors.email && (
+                <small className="text-danger">Invalid email address</small>
+                )}
+              </div>
             </div>
-
             <div>
               <label htmlFor="password" className="sr-only">
                 Password
@@ -120,9 +123,11 @@ export default function Signup() {
                 }`}
                 placeholder="Password"
               />
-              {errors.password && (
-              <small className="text-danger">Password is required</small>
-              )}
+              <div className="text-red-600">
+                {errors.password && (
+                <small className="text-danger">Password is required</small>
+                )}
+              </div>
             </div>
           </div>
 
