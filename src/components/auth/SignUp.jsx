@@ -7,13 +7,15 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { LockClosedIcon } from '@heroicons/react/20/solid';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { userRegister } from '../../redux/auth/registerSlice';
 import logo from '../../images/logo/logo.png';
+import authBackgroundImage from '../../images/auth_background_image.png';
 
 export default function Signup() {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [signUpError, setSignUpError] = useState('');
 
   const {
     register,
@@ -23,14 +25,32 @@ export default function Signup() {
 
   const [values, setValues] = useState({});
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const userData = { user: { email: data.email, password: data.password } };
-    dispatch(userRegister(userData));
+    try {
+      await dispatch(userRegister(userData));
+      navigate('/');
+    } catch (error) {
+      if (error.response && error.response.status === 422) {
+        setSignUpError('user already exists');
+      } else {
+        setSignUpError('Something went wrong. Please try again later.');
+      }
+    }
   };
 
   return (
-    <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md space-y-8 mt-32 bg-gray-100 pt-10 pb-10 pl-5 pr-5 rounded-md shadow-md">
+    <div
+      className="flex min-h-full items-center
+      justify-center py-12 px-4 sm:px-6 lg:px-8
+      w-full h-screen bg-cover bg-no-repeat bg-center
+      align-middle"
+      style={{ backgroundImage: `url(${authBackgroundImage})` }}
+    >
+      <div className="
+        w-full max-w-md space-y-8 mt-32 bg-gray-100 pt-10 pb-10 pl-5 pr-5
+        rounded-md shadow-md bg-opacity-50"
+      >
         <div className="w-auto ">
           <img
             className="mx-auto h-40 w-auto mb-6"
@@ -58,9 +78,11 @@ export default function Signup() {
                 }`}
                 placeholder="User name"
               />
-              {errors.name && (
-              <small className="text-danger">Name is required</small>
-              )}
+              <div className="text-red-600">
+                {errors.name && (
+                <small className="text-danger">Name is required</small>
+                )}
+              </div>
             </div>
 
             <div>
@@ -80,11 +102,12 @@ export default function Signup() {
                 }`}
                 placeholder="Email address"
               />
-              {errors.email && (
-              <small className="text-danger">Invalid email address</small>
-              )}
+              <div className="text-red-600">
+                {errors.email && (
+                <small className="text-danger">Invalid email address</small>
+                )}
+              </div>
             </div>
-
             <div>
               <label htmlFor="password" className="sr-only">
                 Password
@@ -100,14 +123,19 @@ export default function Signup() {
                 }`}
                 placeholder="Password"
               />
-              {errors.password && (
-              <small className="text-danger">Password is required</small>
-              )}
+              <div className="text-red-600">
+                {errors.password && (
+                <small className="text-danger">Password is required</small>
+                )}
+              </div>
             </div>
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="text-red-500">
+            {signUpError && <div>{signUpError}</div>}
+          </div>
 
+          <div className="flex items-center justify-between">
             <div className="text-sm">
               <NavLink
                 to="/login"

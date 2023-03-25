@@ -7,16 +7,19 @@ import React, { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 import { LockClosedIcon } from '@heroicons/react/20/solid';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { userLogin } from '../../redux/auth/loginSlice';
 import logo from '../../images/logo/logo.png';
+import authBackgroundImage from '../../images/auth_background_image.png';
 
 export default function Login() {
   const [user, setUser] = useState({});
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [loginError, setLoginError] = useState('');
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handlechange = (e) => {
     const {
@@ -30,21 +33,34 @@ export default function Login() {
     if (input === 'password') setPasswordError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Validate form fields before dispatching signin action
     if (!user.email) setUsernameError('Email is required');
     if (!user.password) setPasswordError('Password is required');
     if (user.email && user.password) {
       const userData = { user: { email: user.email, password: user.password } };
-      console.log(userData);
-      dispatch(userLogin(userData));
+      try {
+        await dispatch(userLogin(userData));
+        navigate('/');
+      } catch (error) {
+        setLoginError('Invalid email or password');
+      }
     }
   };
 
   return (
-    <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md space-y-8 mt-32 bg-gray-100 pt-10 pb-10 pl-5 pr-5 rounded-md shadow-md">
+    <div
+      className="flex min-h-full items-center
+      justify-center py-12 px-4 sm:px-6 lg:px-8
+      w-full h-screen bg-cover bg-no-repeat bg-center
+      align-middle"
+      style={{ backgroundImage: `url(${authBackgroundImage})` }}
+    >
+      <div className="
+        w-full max-w-md space-y-8 mt-32 bg-gray-100 pt-10 pb-10 pl-5 pr-5
+        rounded-md shadow-md bg-opacity-50"
+      >
         <div className="w-auto ">
           <img
             className="mx-auto h-40 w-auto mb-6"
@@ -97,8 +113,12 @@ export default function Login() {
                 <small className="text-danger">{passwordError}</small>
               )}
             </div>
-
           </div>
+
+          <div className="text-red-500">
+            {loginError && <div>{loginError}</div>}
+          </div>
+
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <input
