@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+/* eslint-disable   no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const apiUrl = 'http://localhost:3000/api/v1/houses';
@@ -10,7 +11,7 @@ const initialState = {
 };
 
 const addHouseSlice = createSlice({
-  name: "addhouse",
+  name: 'addhouse',
   initialState,
   reducers: {
     addHouseStart: (state) => {
@@ -32,23 +33,21 @@ const addHouseSlice = createSlice({
 export const { addHouseStart, addHouseSuccess, addHouseFail } = addHouseSlice.actions;
 
 export const addHouse = (houseData) => async (dispatch) => {
-    dispatch(addHouseStart());
-    try {
-        const response = await axios.post(apiUrl, houseData, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-                Authorization: accessToken,
-            },
-            method: 'POST'
-        })
-        dispatch(addHouseSuccess());
-      return response.data
-        
-    } catch (error) {
-        dispatch(addHouseFail(error.response?.data?.errors || error.message));
-           
-    }
-
-}
+  dispatch(addHouseStart());
+  try {
+    const response = await axios.post(apiUrl, houseData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: accessToken,
+      },
+      method: 'POST',
+    });
+    dispatch(addHouseSuccess());
+    return response.data;
+  } catch (error) {
+    dispatch(addHouseFail(error.response?.data?.errors || error.message));
+    throw error;
+  }
+};
 
 export default addHouseSlice.reducer;
