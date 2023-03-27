@@ -26,3 +26,13 @@ const houseSlice = createSlice({
     },
   },
 });
+
+const fetchHouses = () => async (dispatch) => {
+    try {
+      dispatch(fetchHouseStart());
+      const response = await axios.get('/houses');
+      dispatch(fetchHouseSuccess(response.data));
+    } catch (error) {
+      dispatch(fetchHouseFailed(error.message));
+    }
+  };
