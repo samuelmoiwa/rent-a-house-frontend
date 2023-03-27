@@ -6,6 +6,7 @@ import registerSlice from './auth/registerSlice';
 import loginSlice from './auth/loginSlice';
 import logoutSlice from './auth/logoutSlice';
 import addHouseSlice from './house/addHouseSlice';
+import displayHouseSlice from './house/displayHouseSlice'
 
 // root Reducer
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   login: loginSlice,
   logout: logoutSlice,
   addHouse: addHouseSlice,
+  displayHouse: displayHouseSlice,
 
 });
 
