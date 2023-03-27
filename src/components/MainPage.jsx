@@ -15,5 +15,15 @@ const MainPage = () => {
   useEffect(() => {
     dispatch(fetchHouses());
   }, [dispatch]);
+
+  // If the houses are still loading, display a loading message
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  // If there was an error fetching the houses, display an error message
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
   
 export default MainPage
