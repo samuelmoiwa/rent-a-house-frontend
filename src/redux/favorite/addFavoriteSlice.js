@@ -29,3 +29,4 @@ const initialState = {
     };
 
     export const { addFavoriteStart, addFavoriteSuccess, addFavoriteFailure } = favoriteSlice.actions;
+    export default favoriteSlice.reducer;
