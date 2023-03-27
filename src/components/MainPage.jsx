@@ -8,4 +8,7 @@ const MainPage = () => {
     const isLoading = useSelector((state) => state.house.isLoading);
     const error = useSelector((state) => state.house.error);
 
+    // Get the dispatch function to dispatch actions to the Redux store
+  const dispatch = useDispatch();
+
 export default MainPage
