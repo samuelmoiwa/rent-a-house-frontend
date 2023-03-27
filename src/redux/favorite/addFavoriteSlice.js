@@ -14,3 +14,10 @@ const initialState = {
     state.loading = false;
     state.favorites.push(action.payload);
   },
+  addFavoriteFailure: (state, action) => {
+    state.loading = false;
+    state.error = action.payload;
+  }
+  
+}
+});
