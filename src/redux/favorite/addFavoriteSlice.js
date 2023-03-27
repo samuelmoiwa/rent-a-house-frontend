@@ -19,6 +19,8 @@ const initialState = {
     state.error = action.payload;
   }
   export const addFavorite = (houseId) => async (dispatch) => {
-    
+    try {
+        dispatch(addFavoriteStart());
+        const response = await axios.post('/favorites', { houseId });
   };
   
