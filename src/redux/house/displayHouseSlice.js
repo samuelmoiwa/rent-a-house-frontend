@@ -6,3 +6,12 @@ const initialState = {
     isLoading: false,
     error: null,
   };
+
+  const houseSlice = createSlice({
+    name: 'house',
+    initialState,
+    reducers: {
+      fetchHouseStart: (state) => {
+        state.isLoading = true;
+        state.error = null;
+      },
