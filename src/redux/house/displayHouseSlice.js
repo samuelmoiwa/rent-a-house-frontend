@@ -11,7 +11,7 @@ const initialState = {
     name: 'house',
     initialState,
     reducers: {
-      fetchHouseStart: (state) => {
-        state.isLoading = true;
-        state.error = null;
+        fetchHouseStart: (state) => {
+            state.isLoading = true;
+            state.error = null;
       },
