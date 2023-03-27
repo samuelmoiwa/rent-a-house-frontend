@@ -10,3 +10,7 @@ const initialState = {
     state.loading = true;
     state.error = null;
   },
+  addFavoriteSuccess: (state, action) => {
+    state.loading = false;
+    state.favorites.push(action.payload);
+  },
