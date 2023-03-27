@@ -27,3 +27,5 @@ const initialState = {
         dispatch(addFavoriteFailure(error.message));
       }
     };
+
+    export const { addFavoriteStart, addFavoriteSuccess, addFavoriteFailure } = favoriteSlice.actions;
