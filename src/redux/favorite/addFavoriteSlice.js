@@ -6,3 +6,7 @@ const initialState = {
     loading: false,
     error: null
   };
+  addFavoriteStart: (state) => {
+    state.loading = true;
+    state.error = null;
+  },
