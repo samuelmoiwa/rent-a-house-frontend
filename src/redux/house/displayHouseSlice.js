@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const apiUrl = 'http://localhost:3000/api/v1/houses';
+
 const initialState = {
   houses: [],
   isLoading: false,
@@ -32,7 +34,7 @@ export const { fetchHouseStart, fetchHouseSuccess, fetchHouseFailed } = houseSli
 export const fetchHouses = () => async (dispatch) => {
   try {
     dispatch(fetchHouseStart());
-    const response = await axios.get('/houses');
+    const response = await axios.get(apiUrl);
     dispatch(fetchHouseSuccess(response.data));
   } catch (error) {
     dispatch(fetchHouseFailed(error.message));
