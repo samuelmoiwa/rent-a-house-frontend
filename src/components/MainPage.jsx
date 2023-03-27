@@ -1,13 +1,11 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchHouses } from './houseSlice';
+import { addHouse } from '../redux/house/addHouseSlice';
 
-function MainPage() {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const MainPage = () => {
+    // Select the necessary properties from the Redux store
+    const houses = useSelector((state) => state.house.houses);
+    const isLoading = useSelector((state) => state.house.isLoading);
+    const error = useSelector((state) => state.house.error);
 
 export default MainPage
