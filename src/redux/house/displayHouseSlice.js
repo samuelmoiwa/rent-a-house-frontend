@@ -1,15 +1,16 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const apiUrl = 'http://localhost:3000/api/v1/houses';
 
 const initialState = {
-  houses: [],
+  houses: [], // added an empty array to initialize houses
   isLoading: false,
   error: null,
 };
 
-const houseSlice = createSlice({
+const displayHouseSlice = createSlice({
   name: 'house',
   initialState,
   reducers: {
@@ -29,16 +30,20 @@ const houseSlice = createSlice({
   },
 });
 
-export const { fetchHouseStart, fetchHouseSuccess, fetchHouseFailed } = houseSlice.actions;
+export const { fetchHouseStart, fetchHouseSuccess, fetchHouseFailed } = displayHouseSlice.actions;
 
 export const fetchHouses = () => async (dispatch) => {
   try {
     dispatch(fetchHouseStart());
-    const response = await axios.get(apiUrl);
+    const response = await axios.get(apiUrl, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
     dispatch(fetchHouseSuccess(response.data));
   } catch (error) {
     dispatch(fetchHouseFailed(error.message));
   }
 };
 
-export default houseSlice.reducer;
+export default displayHouseSlice.reducer;
