@@ -38,3 +38,5 @@ export const fetchHouses = () => async (dispatch) => {
       dispatch(fetchHouseFailed(error.message));
     }
   };
+
+  export default houseSlice.reducer;
