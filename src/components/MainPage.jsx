@@ -25,5 +25,21 @@ const MainPage = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-  
+
+   // Render the list of houses
+  return (
+    <div>
+      <h2>House List</h2>
+      <ul>
+        {houses.map((house) => (
+          <li key={house.id}>
+            <h3>{house.title}</h3>
+            <p>{house.description}</p>
+            <p>Price: {house.price}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 export default MainPage
