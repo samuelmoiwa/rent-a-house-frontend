@@ -18,6 +18,7 @@ const initialState = {
     state.loading = false;
     state.error = action.payload;
   }
+  export const addFavorite = (houseId) => async (dispatch) => {
+    
+  };
   
-}
-});
