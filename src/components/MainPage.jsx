@@ -11,4 +11,9 @@ const MainPage = () => {
     // Get the dispatch function to dispatch actions to the Redux store
   const dispatch = useDispatch();
 
+  // Use the useEffect hook to fetch houses when the component mounts
+  useEffect(() => {
+    dispatch(fetchHouses());
+  }, [dispatch]);
+  
 export default MainPage
