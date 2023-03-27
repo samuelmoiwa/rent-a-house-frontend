@@ -22,5 +22,6 @@ const initialState = {
     try {
         dispatch(addFavoriteStart());
         const response = await axios.post('/favorites', { houseId });
+        dispatch(addFavoriteSuccess(response.data));
   };
   
