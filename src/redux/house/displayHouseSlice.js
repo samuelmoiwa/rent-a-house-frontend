@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const initialState = {
   houses: [],
@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const houseSlice = createSlice({
-  name: "house",
+  name: 'house',
   initialState,
   reducers: {
     fetchHouseStart: (state) => {
@@ -30,13 +30,13 @@ const houseSlice = createSlice({
 export const { fetchHouseStart, fetchHouseSuccess, fetchHouseFailed } = houseSlice.actions;
 
 export const fetchHouses = () => async (dispatch) => {
-    try {
-      dispatch(fetchHouseStart());
-      const response = await axios.get('/houses');
-      dispatch(fetchHouseSuccess(response.data));
-    } catch (error) {
-      dispatch(fetchHouseFailed(error.message));
-    }
-  };
+  try {
+    dispatch(fetchHouseStart());
+    const response = await axios.get('/houses');
+    dispatch(fetchHouseSuccess(response.data));
+  } catch (error) {
+    dispatch(fetchHouseFailed(error.message));
+  }
+};
 
-  export default houseSlice.reducer;
+export default houseSlice.reducer;
