@@ -7,6 +7,7 @@ import Signup from './components/auth/SignUp';
 import Logout from './components/auth/Logout';
 import AddHouse from './components/AddHouse';
 import MainPage from './components/MainPage';
+import HouseDetails from './components/HouseDetails';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
       <Route path="/logout" element={<Logout />} />
       <Route path="/addhouse" element={<AddHouse />} />
       <Route path="/mainpage" element={<MainPage />} />
+      <Route path="house-details/:id" element={<HouseDetails />} />
+      
 
     </Routes>
   );
