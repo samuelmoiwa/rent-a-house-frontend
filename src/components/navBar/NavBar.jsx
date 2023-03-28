@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
+import LogoutButton from '../auth/Logout';
 import logo from '../../images/logo/logo.png';
 
 function NavBar() {
@@ -20,22 +21,30 @@ function NavBar() {
       <div className="hidden md:block fixed top-0 bottom-0 p-2 w-[200px] overflow-y-auto text-center bg-white shadow h-screen border-r-3 border-gray-400">
         <div className="w-44 pt-8 flex justify-center items-center"><img src={logo} alt="logo-image" className="w-32" /></div>
         <ul className="mt-30 font-montserrat font-bold text-left text-font-color pl-2">
-          <li className="my-7"><NavLink to="/">HOME</NavLink></li>
-          <li className="my-7"><NavLink to="/reserve">RESERVE</NavLink></li>
-          <li className="my-7"><NavLink to="/myreservations">RESERVATIONS</NavLink></li>
-          <li className="my-7"><NavLink to="/additem">ADD</NavLink></li>
-          <li className="my-7"><NavLink to="/deleteitem">DELETE</NavLink></li>
+          <li className="my-7"><NavLink to="/">Houses</NavLink></li>
+          <li className="my-7"><NavLink to="/reserve">My favorites</NavLink></li>
+          <li className="my-7"><NavLink to="/myreservations">Add house</NavLink></li>
+          <li className="my-7"><NavLink to="/additem">Delete house</NavLink></li>
+          <li className="my-7">
+            {' '}
+            <LogoutButton />
+            {' '}
+          </li>
         </ul>
       </div>
       {nav && (
         <div className="fixed top-0 bottom-0 p-2 w-screen overflow-y-auto text-center bg-white shadow h-screen">
           <div onClick={() => setNav(!nav)} className="m-4"><FaTimes size={30} color="green" /></div>
           <ul className="flex-col font-montserrat font-bold text-font-color">
-            <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/">HOME</NavLink></li>
-            <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/reserve">RESERVE</NavLink></li>
-            <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/myreservations">RESERVATIONS</NavLink></li>
-            <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/additem">ADD</NavLink></li>
-            <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/deleteitem">DELETE</NavLink></li>
+            <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/">Houses</NavLink></li>
+            <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/reserve">My favorites</NavLink></li>
+            <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/myreservations">Add house</NavLink></li>
+            <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/additem">Delete house</NavLink></li>
+            <li onClick={() => setNav(!nav)} className="my-5">
+              {' '}
+              <LogoutButton />
+              {' '}
+            </li>
           </ul>
         </div>
       )}
