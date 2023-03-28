@@ -6,16 +6,20 @@ import Login from './components/auth/Login';
 import Signup from './components/auth/SignUp';
 import Logout from './components/auth/Logout';
 import AddHouse from './components/AddHouse';
+import NavBar from './components/navBar/NavBar';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/logout" element={<Logout />} />
-      <Route path="/addhouse" element={<AddHouse />} />
-    </Routes>
+    <>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/addhouse" element={<AddHouse />} />
+      </Routes>
+    </>
   );
 }
 
