@@ -5,6 +5,7 @@ import { fetchHouses } from '../redux/house/displayHouseSlice';
 
 const MainPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const displayHouse = useSelector((state) => state.displayHouse);
 
   useEffect(() => {
@@ -13,6 +14,7 @@ const MainPage = () => {
 
   // Check if houses property exists before trying to access it
   const houses = displayHouse && displayHouse.houses;
+  console.log(houses)
 
   return (
     <div>
