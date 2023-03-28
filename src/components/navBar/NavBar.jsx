@@ -23,7 +23,7 @@ function NavBar() {
         <ul className="mt-30 font-montserrat font-bold text-left text-font-color pl-2">
           <li className="my-7"><NavLink to="/">Houses</NavLink></li>
           <li className="my-7"><NavLink to="/reserve">My favorites</NavLink></li>
-          <li className="my-7"><NavLink to="/myreservations">Add house</NavLink></li>
+          <li className="my-7"><NavLink to="/addhouse">Add house</NavLink></li>
           <li className="my-7"><NavLink to="/additem">Delete house</NavLink></li>
           <li className="my-7">
             {' '}
@@ -38,7 +38,7 @@ function NavBar() {
           <ul className="flex-col font-montserrat font-bold text-font-color">
             <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/">Houses</NavLink></li>
             <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/reserve">My favorites</NavLink></li>
-            <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/myreservations">Add house</NavLink></li>
+            <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/addhouse">Add house</NavLink></li>
             <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/additem">Delete house</NavLink></li>
             <li onClick={() => setNav(!nav)} className="my-5">
               {' '}
