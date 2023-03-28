@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { fetchHouses } from '../redux/house/displayHouseSlice';
 
 const MainPage = () => {
@@ -21,6 +22,7 @@ const MainPage = () => {
           <p>{house.description}</p>
           <p>{house.price}</p>
           {house.image_url && <img src={house.image_url} alt="My Image" />}
+          <div onClick={() => navigate(`/house-details/${house.id}`)}>House Details</div>
         </div>
       ))}
     </div>
