@@ -15,7 +15,7 @@ function NavBar() {
   return (
     <div className="">
       <div className="md:hidden flex justify-between m-2">
-        <div onClick={() => setNav(!nav)}><FaBars size={30} color="green" /></div>
+        <div onClick={() => setNav(!nav)}><FaBars size={30} color="orange" /></div>
         <div className="w-10 h-10"><img src={logo} alt="logo-image" className="object-contain" /></div>
       </div>
       <div className="hidden md:block fixed top-0 bottom-0 p-2 w-[200px] overflow-y-auto text-center bg-white shadow h-screen border-r-3 border-gray-400">
@@ -34,7 +34,7 @@ function NavBar() {
       </div>
       {nav && (
         <div className="fixed top-0 bottom-0 p-2 w-screen overflow-y-auto text-center bg-white shadow h-screen">
-          <div onClick={() => setNav(!nav)} className="m-4"><FaTimes size={30} color="green" /></div>
+          <div onClick={() => setNav(!nav)} className="m-4"><FaTimes size={30} color="orange" /></div>
           <ul className="flex-col font-montserrat font-bold text-font-color">
             <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/">Houses</NavLink></li>
             <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/reserve">My favorites</NavLink></li>
