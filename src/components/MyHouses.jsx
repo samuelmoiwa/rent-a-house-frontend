@@ -13,23 +13,26 @@ const MyHouses = () => {
 
    // Check if user property exists before trying to access it
   const user = currentUser && currentUser.houses;
-  console.log(user)
  
   return (
     <div>
         {user && (
             <div>
-                <h1>{user.email}</h1>
                 {user.houses ? (
                     <ul>
-                        {user.houses.map((house) => (
-                            <li key={house.id}>{house.title}</li>
-                        ))}
+                        {
+                        user.houses.map((house) => (
+                            <div key={house.id}>
+                            <li>{house.title}</li>
+                            <li><img src={house.image_url} width={80} height={50}/></li>
+                            </div>  
+                        ))
+                        }
                     </ul>
                 ):( 
                 <div>
                     <p>You have no houses Added.</p>
-                    <button onClick={() => useNavigate('/addhouse')}>Add A House</button>
+                    <button className='bg-button-color py-2 px-3' onClick={() => useNavigate('/addhouse')}>Add A House</button>
                 </div>
                 )}
             </div>
