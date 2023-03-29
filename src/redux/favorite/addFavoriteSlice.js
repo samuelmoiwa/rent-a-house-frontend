@@ -26,10 +26,10 @@ export const favoriteSlice = createSlice({
   }
 });
 
-export const addFavorite = (houseId) => async (dispatch) => {
+export const addFavorite = (house.id) => async (dispatch) => {
   try {
     dispatch(addFavoriteStart());
-    const response = await axios.post('/favorites', { houseId });
+    const response = await axios.post('/favorites', { house.id });
     dispatch(addFavoriteSuccess(response.data));
   } catch (error) {
     dispatch(addFavoriteFailure(error.message));
