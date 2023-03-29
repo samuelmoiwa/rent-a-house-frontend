@@ -18,7 +18,6 @@ const rootReducer = combineReducers({
   addHouse: addHouseSlice,
   displayHouse: displayHouseSlice,
   currentUser: currentUserSlice,
-
 });
 
 // Redux store

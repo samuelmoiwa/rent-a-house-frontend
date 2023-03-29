@@ -4,14 +4,14 @@ import { getCurrentUser } from '../redux/user/currentUserSlice';
 
 const MyHouses = () => {
     const dispatch = useDispatch()
-    const displayUser = useSelector((state) => state.displayUser);
+    const currentUser = useSelector((state) => state.currentUser);
 
     useEffect(() => {
         dispatch(getCurrentUser)
     }, [dispatch])
 
    // Check if user property exists before trying to access it
-  const user = displayUser && displayUser.currentUser;
+  const user = currentUser && currentUser.currentUser;
   console.log(user)
 
     return (
