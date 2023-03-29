@@ -24,7 +24,7 @@ const currentUserSlice = createSlice({
             state.isLoading = false;
             state.error = null;
         },
-        fetchCurrentUserFail: (state, house) => {
+        fetchCurrentUserFail: (state, action) => {
             state.isLoading = false;
             state.error = action.payload;
         },
@@ -42,8 +42,7 @@ export const getCurrentUser = () => async (dispatch) => {
                 Authorization: accessToken,
             },
         });
-        dispatch(fetchCurrentUserSuccess());
-       console.log(response.data)
+        dispatch(fetchCurrentUserSuccess(response.data));
     } catch (error) {
         dispatch(fetchCurrentUserFail(error.response?.data?.errors || error.message))
         throw error;

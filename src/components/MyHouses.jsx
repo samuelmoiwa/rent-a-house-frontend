@@ -7,16 +7,29 @@ const MyHouses = () => {
     const currentUser = useSelector((state) => state.currentUser);
 
     useEffect(() => {
-        dispatch(getCurrentUser)
+        dispatch(getCurrentUser())
     }, [dispatch])
 
    // Check if user property exists before trying to access it
-  const user = currentUser && currentUser.currentUser;
+  const user = currentUser && currentUser.houses;
   console.log(user)
-
-    return (
-        <div>MyHouses</div>
-    )
+ 
+  return (
+    <div>
+        {user && (
+            <div>
+                <h1>{user.email}</h1>
+                {user.houses && (
+                    <ul>
+                        {user.houses.map((house) => (
+                            <li key={house.id}>{house.title}</li>
+                        ))}
+                    </ul>
+                )}
+            </div>
+        )}
+    </div>
+)
 }
 
 export default MyHouses;
