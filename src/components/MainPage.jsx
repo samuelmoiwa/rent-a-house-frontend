@@ -23,7 +23,7 @@ const MainPage = () => {
           <h2>{house.title}</h2>
           <p>{house.description}</p>
           <p>{house.price}</p>
-          {house.image_url && <img src={house.image_url} alt="My Image" />}
+          {house.image_url && <img src={`http://localhost:3000${house.image_url}`} width={100} height={100} alt="My Image" />}
           <div onClick={() => navigate(`/house-details/${house.id}`)}>House Details</div>
         </div>
       ))}
