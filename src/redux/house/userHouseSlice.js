@@ -21,5 +21,12 @@ const userHouseSlice = createSlice({
             state.isLoading = false;
             state.error = null;
         },
+        fetchUserHouseFail: (state, house) => {
+            state.isLoading = false;
+            state.error = action.payload;
+
+        },
     },
-})
+});
+
+export const { fetchUserHouseStart, fetchUserHouseSuccess, fetchUserHouseFail } = userHouseSlice.actions;
