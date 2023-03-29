@@ -6,7 +6,6 @@ import Login from './components/auth/Login';
 import Signup from './components/auth/SignUp';
 import Logout from './components/auth/Logout';
 import AddHouse from './components/AddHouse';
-import MainPage from './components/MainPage';
 import HouseDetails from './components/HouseDetails';
 
 function App() {
