@@ -1,11 +1,11 @@
 import React from 'react';
 import LogoutButton from './auth/Logout';
-import Mainpage from './MainPage';
+import MainPage from './MainPage';
 
 const Home = () => (
   <div>
     <LogoutButton />
-   <MainPage />
+    <MainPage />
     
   </div>
 );

@@ -25,6 +25,7 @@ const HouseDetails = () => {
           <h1>{houseDetails.title}</h1>
           <p>{houseDetails.description}</p>
           <img src={`http://localhost:3000${houseDetails.image_url}`} alt={houseDetails.title} />
+          <button className="bg-button-color py-2 px-3">Add To Favorites</button>;
         </>
       ) : (
         <p>House Loading</p>
