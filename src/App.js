@@ -6,6 +6,7 @@ import Login from './components/auth/Login';
 import Signup from './components/auth/SignUp';
 import Logout from './components/auth/Logout';
 import AddHouse from './components/AddHouse';
+import MyHouses from './components/MyHouses';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/addHouse" element={<AddHouse />} />
+        <Route path="/myhouses" element={<MyHouses />} />
       </Routes>
     </>
   );
