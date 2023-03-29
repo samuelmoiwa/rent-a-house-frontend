@@ -6,13 +6,13 @@ const apiUrl = 'http://localhost:3000/api/v1/users';
 const accessToken = localStorage.getItem('access_token');
 
 const initialState = {
-    houses: [],   // empty array to initalize house
+    currentUser: [],   // empty array to initalize house
     isLoading: false,
     error: null
 };
 
 const currentUserSlice = createSlice({
-    name: 'userHouse',
+    name: 'currentUser',
     initialState,
     reducers: {
         fetchCurrentUserStart: (state) => {
@@ -33,7 +33,7 @@ const currentUserSlice = createSlice({
 
 export const { fetchCurrentUserStart, fetchCurrentUserSuccess, fetchCurrentUserFail } = currentUserSlice.actions;
 
-export const currentUser = () => async (dispatch) => {
+export const getCurrentUser = () => async (dispatch) => {
     try {
         dispatch(fetchCurrentUserStart());
         const response = await axios.get(apiUrl, {
