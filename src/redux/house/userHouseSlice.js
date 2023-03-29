@@ -16,5 +16,10 @@ const userHouseSlice = createSlice({
             state.isLoading = true;
             state.error = null;
         },
+        fetchUserHouseSuccess: (state, action) => {
+            state.houses = action.payload;
+            state.isLoading = false;
+            state.error = null;
+        },
     },
 })
