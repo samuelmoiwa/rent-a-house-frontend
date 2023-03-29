@@ -32,7 +32,6 @@ export const userLogout = () => async (dispatch) => {
         Authorization: localStorage.getItem('access_token'),
       },
     });
-
     // Remove the access token from local storage
     localStorage.removeItem('access_token');
     // Dispatch the logoutSuccess action to update the authentication state
