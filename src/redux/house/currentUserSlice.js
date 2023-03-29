@@ -15,37 +15,37 @@ const currentUserSlice = createSlice({
     name: 'userHouse',
     initialState,
     reducers: {
-        fetchUserHouseStart: (state) => {
+        fetchCurrentUserStart: (state) => {
             state.isLoading = true;
             state.error = null;
         },
-        fetchUserHouseSuccess: (state, action) => {
+        fetchCurrentUserSuccess: (state, action) => {
             state.houses = action.payload;
             state.isLoading = false;
             state.error = null;
         },
-        fetchUserHouseFail: (state, house) => {
+        fetchCurrentUserFail: (state, house) => {
             state.isLoading = false;
             state.error = action.payload;
         },
     },
 });
 
-export const { fetchUserHouseStart, fetchUserHouseSuccess, fetchUserHouseFail } = currentUserSlice.actions;
+export const { fetchCurrentUserStart, fetchCurrentUserSuccess, fetchCurrentUserFail } = currentUserSlice.actions;
 
 export const fetchCurrentUser = () => async (dispatch) => {
     try {
-        dispatch(fetchUserHouseStart());
+        dispatch(fetchCurrentUserStart());
         const response = await axios.get(apiUrl, {
             headers:{
                 'Content-Type': 'application/json',
                 Authorization: accessToken,
             },
         });
-        dispatch(fetchUserHouseSuccess());
+        dispatch(fetchCurrentUserSuccess());
        return response.data;
     } catch (error) {
-        dispatch(fetchUserHouseFail(error.response?.data?.errors || error.message))
+        dispatch(fetchCurrentUserFail(error.response?.data?.errors || error.message))
         throw error;
     }
 
