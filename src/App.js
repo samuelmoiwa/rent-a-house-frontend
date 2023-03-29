@@ -6,18 +6,19 @@ import Login from './components/auth/Login';
 import Signup from './components/auth/SignUp';
 import Logout from './components/auth/Logout';
 import AddHouse from './components/AddHouse';
+import HouseDetails from './components/HouseDetails';
 
 function App() {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/addHouse" element={<AddHouse />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/logout" element={<Logout />} />
+      <Route path="/addhouse" element={<AddHouse />} />
+      <Route path="house-details/:id" element={<HouseDetails />} />
+
+    </Routes>
   );
 }
 
