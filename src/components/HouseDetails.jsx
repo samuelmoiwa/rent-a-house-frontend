@@ -12,11 +12,15 @@ const HouseDetails = () => {
   useEffect(() => {
     dispatch(fetchHouses());
   }, [dispatch]);
-  
+
   // Check if houses property exists before trying to access it
   const houses = displayHouse && displayHouse.houses;
-  const houseDetails = houses && houses.find(house => house.id.toString() === id)
-  
+  const houseDetails = houses && houses.find((house) => house.id.toString() === id);
+  //const [buttonClicked, setButtonClicked] = useState(false);
+
+  const addToFavorites = () => {
+  }
+
   return (
     <div>
       {houseDetails ? (
@@ -24,7 +28,8 @@ const HouseDetails = () => {
           <h1>{houseDetails.title}</h1>
           <p>{houseDetails.description}</p>
           <img src={`http://localhost:3000${houseDetails.image_url}`} alt={houseDetails.title} />
-          <button className="bg-button-color py-2 px-3">Add To Favorites</button>;
+          <button onClick={addToFavorites} className="bg-button-color py-2 px-3">Add To Favorites</button>
+          ;
         </>
       ) : (
         <p>House Loading</p>
