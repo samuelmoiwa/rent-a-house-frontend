@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { getCurrentUser } from '../redux/user/currentUserSlice';
 
 const MyHouses = () => {
@@ -19,12 +20,17 @@ const MyHouses = () => {
         {user && (
             <div>
                 <h1>{user.email}</h1>
-                {user.houses && (
+                {user.houses ? (
                     <ul>
                         {user.houses.map((house) => (
                             <li key={house.id}>{house.title}</li>
                         ))}
                     </ul>
+                ):( 
+                <div>
+                    <p>You have no houses Added.</p>
+                    <button onClick={() => useNavigate('/addhouse')}>Add A House</button>
+                </div>
                 )}
             </div>
         )}
