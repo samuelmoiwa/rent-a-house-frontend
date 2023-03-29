@@ -8,3 +8,9 @@ const AddFavorite = ({ houseId }) => {
 const handleAddToFavorites = () => {
     dispatch(addToFavorites(houseId));
 };
+return (
+    <button onClick={handleAddToFavorites} className="bg-button-color py-2 px-3">
+      Add To Favorites
+    </button>
+  );
+};
