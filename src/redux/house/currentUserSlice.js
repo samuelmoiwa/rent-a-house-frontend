@@ -33,7 +33,7 @@ const currentUserSlice = createSlice({
 
 export const { fetchCurrentUserStart, fetchCurrentUserSuccess, fetchCurrentUserFail } = currentUserSlice.actions;
 
-export const fetchCurrentUser = () => async (dispatch) => {
+export const currentUser = () => async (dispatch) => {
     try {
         dispatch(fetchCurrentUserStart());
         const response = await axios.get(apiUrl, {
@@ -50,3 +50,5 @@ export const fetchCurrentUser = () => async (dispatch) => {
     }
 
 }
+
+export default currentUserSlice;
