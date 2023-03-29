@@ -14,3 +14,5 @@ return (
     </button>
   );
 };
+
+export default AddFavorite;
