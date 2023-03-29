@@ -18,7 +18,7 @@ const HouseDetails = () => {
   const houseDetails = houses && houses.find((house) => house.id.toString() === id);
   //const [buttonClicked, setButtonClicked] = useState(false);
 
-  const addToFavorites = () => {
+  const addFavorites = () => {
   }
 
   return (
@@ -28,7 +28,7 @@ const HouseDetails = () => {
           <h1>{houseDetails.title}</h1>
           <p>{houseDetails.description}</p>
           <img src={`http://localhost:3000${houseDetails.image_url}`} alt={houseDetails.title} />
-          <button onClick={addToFavorites} className="bg-button-color py-2 px-3">Add To Favorites</button>
+          <button onClick={addFavorites} className="bg-button-color py-2 px-3">Add To Favorites</button>
           ;
         </>
       ) : (
