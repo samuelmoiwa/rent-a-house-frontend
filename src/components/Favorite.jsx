@@ -10,10 +10,11 @@ function Favorite() {
   // Initialize local state for favorite items
   const [favorites, setFavorites] = useState([]);
 
+  // Dispatch getCurrentUser() action when component mounts
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
-
+  
   useEffect(() => {
     if (currentUser.currentUser) {
       setFavorites(currentUser.currentUser.favorites || []);
