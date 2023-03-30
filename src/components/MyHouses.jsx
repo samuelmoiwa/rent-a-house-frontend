@@ -1,45 +1,75 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable react/button-has-type */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getCurrentUser } from '../redux/user/currentUserSlice';
+import NavBar from './navBar/NavBar';
 
 const MyHouses = () => {
-    const dispatch = useDispatch()
-    const currentUser = useSelector((state) => state.currentUser);
+  const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.currentUser);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        dispatch(getCurrentUser())
-    }, [dispatch])
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
 
-   // Check if user property exists before trying to access it
+  // Check if user property exists before trying to access it
   const user = currentUser && currentUser.currentUser;
- 
+
   return (
-    <div>
+    <>
+      <NavBar />
+      <div className="text-center xl:ml-52 p-10">
         {user && (
-            <div>
-                {user.houses ? (
-                    <ul>
-                        {
-                        user.houses.map((house) => (
-                            <div key={house.id}>
-                            <li>{house.title}</li>
-                            <li><img src={house.image_url} width={80} height={50}/></li>
-                            <button id={house.id} className='bg-button-color py-2 px-3'>Delete House</button>
-                            </div>  
-                        ))
-                        }
-                    </ul>
-                ):( 
-                <div>
-                    <p>You have no houses Added.</p>
-                    <button className='bg-button-color py-2 px-3' onClick={() => useNavigate('/addhouse')}>Add A House</button>
-                </div>
-                )}
+        <div>
+          {user.houses ? (
+            <ul className="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+              {user.houses.map((house) => (
+                <li
+                  key={house.id}
+                  className="col-span-1 flex flex-col text-center
+                bg-white rounded-lg shadow divide-y divide-gray-200"
+                >
+                  <div className="flex-1 flex flex-col p-8">
+                    <img
+                      className="w-32 h-32 flex-shrink-0 mx-auto bg-black rounded-md object-cover"
+                      src={house.image_url}
+                      alt=""
+                    />
+                    <h3 className="mt-6 text-gray-900 text-sm font-medium">{house.title}</h3>
+                  </div>
+                  <div>
+                    <button
+                      id={house.id}
+                      className="bg-button-color py-2 px-3 rounded-b-lg
+                    hover:bg-button-hover-color focus:outline-none focus:ring-2 focus:ring-offset-2
+                    focus:ring-button-color text-white"
+                    >
+                      Delete House
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div className="mt-8">
+              <p className="text-lg font-medium text-gray-900">You have no houses Added.</p>
+              <button
+                className="mt-8 bg-button-color py-2 px-3 rounded-lg hover:bg-button-hover-color focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-button-color"
+                onClick={() => navigate('/addhouse')}
+              >
+                Add A House
+              </button>
             </div>
+          )}
+        </div>
         )}
-    </div>
-)
-}
+      </div>
+    </>
+  );
+};
 
 export default MyHouses;
