@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { getCurrentUser } from '../redux/user/currentUserSlice';
 
 function Favorite() {
-    const dispatch = useDispatch();
+  // Initialize Redux hooks
+  const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.currentUser);
 
   // Initialize local state for favorite items
@@ -38,4 +38,4 @@ function Favorite() {
   );
 }
 
-export default Favorite
+export default Favorite;
