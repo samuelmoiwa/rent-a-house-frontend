@@ -9,7 +9,7 @@ import AddHouse from './components/AddHouse';
 import HouseDetails from './components/HouseDetails';
 import AddFavorite from './components/AddFavorite';
 import MyHouses from './components/MyHouses';
-import Favorite from './components/'
+import Favorite from './components/Favorite';
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
       <Route path="/deletehouse" element={<MyHouses />} />
       <Route path="house-details/:id" element={<HouseDetails />} />
       <Route path="/addfavorite" element={<AddFavorite />} />
+      <Route path="/favorite" element={<Favorite />} />
     </Routes>
   );
 }
