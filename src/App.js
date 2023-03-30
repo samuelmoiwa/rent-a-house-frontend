@@ -7,6 +7,7 @@ import Signup from './components/auth/SignUp';
 import Logout from './components/auth/Logout';
 import AddHouse from './components/AddHouse';
 import HouseDetails from './components/HouseDetails';
+import MyHouses from './components/MyHouses';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/logout" element={<Logout />} />
       <Route path="/addhouse" element={<AddHouse />} />
+      <Route path="/deletehouse" element={<MyHouses />} />
       <Route path="house-details/:id" element={<HouseDetails />} />
     </Routes>
   );

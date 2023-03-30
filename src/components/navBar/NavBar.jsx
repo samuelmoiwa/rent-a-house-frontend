@@ -24,7 +24,7 @@ function NavBar() {
           <li className="my-7"><NavLink to="/">Houses</NavLink></li>
           <li className="my-7"><NavLink to="/reserve">My favorites</NavLink></li>
           <li className="my-7"><NavLink to="/addhouse">Add house</NavLink></li>
-          <li className="my-7"><NavLink to="/additem">Delete house</NavLink></li>
+          <li className="my-7"><NavLink to="/deletehouse">Delete house</NavLink></li>
           <li className="my-7">
             {' '}
             <LogoutButton />
@@ -39,7 +39,7 @@ function NavBar() {
             <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/">Houses</NavLink></li>
             <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/reserve">My favorites</NavLink></li>
             <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/addhouse">Add house</NavLink></li>
-            <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/additem">Delete house</NavLink></li>
+            <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/deletehouse">Delete house</NavLink></li>
             <li onClick={() => setNav(!nav)} className="my-5">
               {' '}
               <LogoutButton />
