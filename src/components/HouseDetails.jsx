@@ -3,12 +3,14 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchHouses } from '../redux/house/displayHouseSlice';
+import AddFavorite from './AddFavorite';
 import NavBar from './navBar/NavBar';
+
 
 const HouseDetails = () => {
   const dispatch = useDispatch();
   const displayHouse = useSelector((state) => state.displayHouse);
-
+ 
   const { id } = useParams();
 
   useEffect(() => {
@@ -30,7 +32,7 @@ const HouseDetails = () => {
             <div className="p-4">
               <h1 className="text-2xl font-bold">{houseDetails.title}</h1>
               <p className="text-gray-700 my-2">{houseDetails.description}</p>
-              <button className="bg-button-color hover:bg-button-hover-color text-white py-2 px-4 rounded-lg shadow-lg">Add To Favorites</button>
+              <AddFavorite houseId={houseDetails.id} />
             </div>
           </div>
         ) : (
