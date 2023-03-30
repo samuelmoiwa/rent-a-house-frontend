@@ -1,7 +1,9 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addHouse } from '../redux/house/addHouseSlice';
+import NavBar from './navBar/NavBar';
 
 export default function AddHouse() {
   const [formData, setFormData] = useState({
@@ -9,6 +11,43 @@ export default function AddHouse() {
     description: '',
     price: '',
   });
+
+  const [formErrors, setFormErrors] = useState({
+    title: '',
+    description: '',
+    price: '',
+    image: null,
+  });
+
+  const validateFormData = () => {
+    const errors = {};
+
+    // Validate title
+    if (!formData.title) {
+      errors.title = 'Title is required';
+    }
+
+    // Validate description
+    if (!formData.description) {
+      errors.description = 'Description is required';
+    }
+
+    // Validate price
+    if (!formData.price) {
+      errors.price = 'Price is required';
+    } else if (isNaN(formData.price)) {
+      errors.price = 'Price must be a number';
+    }
+
+    if (!formData.image) {
+      errors.image = 'image is required';
+    }
+
+    setFormErrors(errors);
+
+    // Return true if there are no errors
+    return Object.keys(errors).length === 0;
+  };
 
   const dispatch = useDispatch();
 
@@ -23,65 +62,93 @@ export default function AddHouse() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const formDataWithHouse = {
-      house: formData,
-    };
-    // const myformdata = {house: {formData}}
-    console.log(formDataWithHouse);
 
-    dispatch(addHouse(formDataWithHouse));
+    // Validate form data
+    if (validateFormData()) {
+      const formDataWithHouse = {
+        house: formData,
+      };
+      dispatch(addHouse(formDataWithHouse));
+    }
   };
 
   return (
-    <div>
-      <h1>Add House Form</h1>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <div>
-          <label htmlFor="title">
-            Title:
-          </label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={formData.title}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="description">
-            Description:
-          </label>
-          <textarea
-            id="description"
-            name="description"
-            value={formData.description}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="price">Price:</label>
-          <input
-            type="number"
-            id="price"
-            name="price"
-            value={formData.price}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="image">Image:</label>
-          <input
-            type="file"
-            id="image"
-            name="image"
-            accept="image/*"
-            onChange={handleImageChange}
-          />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-
-    </div>
+    <>
+      <NavBar />
+      <div className="container mx-auto p-4">
+        <h1 className="text-3xl font-bold mb-4 text-center">Add House Form</h1>
+        <form className="max-w-lg mx-auto" onSubmit={handleSubmit} encType="multipart/form-data">
+          <div className="mb-4">
+            <label className="block text-gray-700 font-bold mb-2" htmlFor="title">
+              Title:
+            </label>
+            <input
+              className="w-full p-2 border rounded-md"
+              type="text"
+              id="title"
+              name="title"
+              value={formData.title}
+              onChange={handleInputChange}
+            />
+            {formErrors.title && (
+              <div className="text-red-500 text-sm">{formErrors.title}</div>
+            )}
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-bold mb-2" htmlFor="description">
+              Description:
+            </label>
+            <textarea
+              className="w-full p-2 border rounded-md"
+              id="description"
+              name="description"
+              value={formData.description}
+              onChange={handleInputChange}
+            />
+            {formErrors.description && (
+              <div className="text-red-500 text-sm">{formErrors.description}</div>
+            )}
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-bold mb-2" htmlFor="price">
+              Price:
+            </label>
+            <input
+              className="w-full p-2 border rounded-md"
+              type="number"
+              id="price"
+              name="price"
+              value={formData.price}
+              onChange={handleInputChange}
+            />
+            {formErrors.price && (
+            <div className="text-red-500 text-sm">{formErrors.price}</div>
+            )}
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-bold mb-2" htmlFor="image">
+              Image:
+            </label>
+            <input
+              className="p-2 border rounded-md"
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+              onChange={handleImageChange}
+            />
+            {formErrors.image && (
+            <div className="text-red-500 text-sm">{formErrors.image}</div>
+            )}
+          </div>
+          <button
+            className="bg-button-color hover:bg-button-hover-color text-white font-bold py-2 px-4 rounded"
+            type="submit"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </>
   );
 }

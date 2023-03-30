@@ -17,7 +17,6 @@ function App() {
       <Route path="/logout" element={<Logout />} />
       <Route path="/addhouse" element={<AddHouse />} />
       <Route path="house-details/:id" element={<HouseDetails />} />
-
     </Routes>
   );
 }
