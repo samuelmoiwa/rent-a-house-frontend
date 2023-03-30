@@ -22,4 +22,20 @@ function Favorite() {
     }
   }, [currentUser]);
 
+  // Render favorite items or message
+  return (
+    <div>
+      {favorites.length === 0 ? (
+        <p>No favorites found.</p>
+      ) : (
+        <ul>
+          {favorites.map((favorite) => (
+            <li key={favorite.id}>{favorite.name}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 export default Favorite
