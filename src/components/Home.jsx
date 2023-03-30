@@ -3,8 +3,8 @@ import MainPage from './MainPage';
 
 const Home = () => (
   <div>
+    <NavBar />
     <MainPage />
-    <h1>Home</h1>
   </div>
 );
 
