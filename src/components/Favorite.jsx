@@ -6,6 +6,12 @@ import { getCurrentUser } from '../redux/user/currentUserSlice';
 function Favorite() {
     const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.currentUser);
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
+
+  
   return (
     <div>
       
