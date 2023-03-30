@@ -1,7 +1,9 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchHouses } from '../redux/house/displayHouseSlice';
+import NavBar from './navBar/NavBar';
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -18,6 +20,7 @@ const MainPage = () => {
 
   return (
     <div>
+      <NavBar />
       {houses && houses.map((house) => (
         <div key={house.id}>
           <h2>{house.title}</h2>
