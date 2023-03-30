@@ -25,6 +25,7 @@ const MyHouses = () => {
                             <div key={house.id}>
                             <li>{house.title}</li>
                             <li><img src={house.image_url} width={80} height={50}/></li>
+                            <button id={house.id} className='bg-button-color py-2 px-3'>Delete House</button>
                             </div>  
                         ))
                         }
