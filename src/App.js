@@ -9,6 +9,7 @@ import AddHouse from './components/AddHouse';
 import HouseDetails from './components/HouseDetails';
 import AddFavorite from './components/AddFavorite';
 import MyHouses from './components/MyHouses';
+import Favorite from './components/'
 
 function App() {
   return (

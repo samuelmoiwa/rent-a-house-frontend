@@ -7,16 +7,19 @@ function Favorite() {
     const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.currentUser);
 
+  // Initialize local state for favorite items
+  const [favorites, setFavorites] = useState([]);
+
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
 
   useEffect(() => {
     if (currentUser.currentUser) {
-      setHouses(currentUser.currentUser.favorites || []);
+      setFavorites(currentUser.currentUser.favorites || []);
     }
   }, [currentUser]);
-
+console.log(favorites)
   return (
     <div>
       
