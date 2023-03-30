@@ -12,7 +12,7 @@ const MyHouses = () => {
     }, [dispatch])
 
    // Check if user property exists before trying to access it
-  const user = currentUser && currentUser.houses;
+  const user = currentUser && currentUser.currentUser;
  
   return (
     <div>

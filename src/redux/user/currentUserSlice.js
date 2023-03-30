@@ -20,7 +20,7 @@ const currentUserSlice = createSlice({
       state.error = null;
     },
     fetchCurrentUserSuccess: (state, action) => {
-      state.houses = action.payload;
+      state.currentUser = action.payload;
       state.isLoading = false;
       state.error = null;
     },
