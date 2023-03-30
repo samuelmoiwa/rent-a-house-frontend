@@ -1,4 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+const apiUrl = 'http://localhost:3000/api/v1/houses/36';
+const accessToken = localStorage.getItem('access_token');
 
 const initialState = {
     deleteHouse: [],
@@ -27,3 +31,19 @@ const deleteHouseSlice = createSlice({
 });
 
 export const { deleteHouseStart, deleteHouseSuccess, deleteHouseFailed } = deleteHouseSlice.actions;
+
+export const deleteHouse = () => async (dispatch) => {
+    try {
+        dispatch(deleteHouseStart());
+        const response = await axios.delete(apiUrl, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: accessToken,
+            },
+        });
+        dispatch(deleteHouseSuccess(response.data)); 
+    } catch (error) {
+        dispatch(deleteHouseFailed(error.response?.data?.errors || error.message))
+        throw error;
+    }
+}
