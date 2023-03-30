@@ -11,7 +11,12 @@ function Favorite() {
     dispatch(getCurrentUser());
   }, [dispatch]);
 
-  
+  useEffect(() => {
+    if (currentUser.currentUser) {
+      setHouses(currentUser.currentUser.favorites || []);
+    }
+  }, [currentUser]);
+
   return (
     <div>
       
