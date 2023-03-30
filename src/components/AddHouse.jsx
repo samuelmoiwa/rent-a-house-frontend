@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -10,6 +11,43 @@ export default function AddHouse() {
     description: '',
     price: '',
   });
+
+  const [formErrors, setFormErrors] = useState({
+    title: '',
+    description: '',
+    price: '',
+    image: null,
+  });
+
+  const validateFormData = () => {
+    const errors = {};
+
+    // Validate title
+    if (!formData.title) {
+      errors.title = 'Title is required';
+    }
+
+    // Validate description
+    if (!formData.description) {
+      errors.description = 'Description is required';
+    }
+
+    // Validate price
+    if (!formData.price) {
+      errors.price = 'Price is required';
+    } else if (isNaN(formData.price)) {
+      errors.price = 'Price must be a number';
+    }
+
+    if (!formData.image) {
+      errors.image = 'image is required';
+    }
+
+    setFormErrors(errors);
+
+    // Return true if there are no errors
+    return Object.keys(errors).length === 0;
+  };
 
   const dispatch = useDispatch();
 
@@ -24,13 +62,14 @@ export default function AddHouse() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const formDataWithHouse = {
-      house: formData,
-    };
-    // const myformdata = {house: {formData}}
-    console.log(formDataWithHouse);
 
-    dispatch(addHouse(formDataWithHouse));
+    // Validate form data
+    if (validateFormData()) {
+      const formDataWithHouse = {
+        house: formData,
+      };
+      dispatch(addHouse(formDataWithHouse));
+    }
   };
 
   return (
@@ -51,6 +90,9 @@ export default function AddHouse() {
               value={formData.title}
               onChange={handleInputChange}
             />
+            {formErrors.title && (
+              <div className="text-red-500 text-sm">{formErrors.title}</div>
+            )}
           </div>
           <div className="mb-4">
             <label className="block text-gray-700 font-bold mb-2" htmlFor="description">
@@ -63,6 +105,9 @@ export default function AddHouse() {
               value={formData.description}
               onChange={handleInputChange}
             />
+            {formErrors.description && (
+              <div className="text-red-500 text-sm">{formErrors.description}</div>
+            )}
           </div>
           <div className="mb-4">
             <label className="block text-gray-700 font-bold mb-2" htmlFor="price">
@@ -76,6 +121,9 @@ export default function AddHouse() {
               value={formData.price}
               onChange={handleInputChange}
             />
+            {formErrors.price && (
+            <div className="text-red-500 text-sm">{formErrors.price}</div>
+            )}
           </div>
           <div className="mb-4">
             <label className="block text-gray-700 font-bold mb-2" htmlFor="image">
@@ -89,6 +137,9 @@ export default function AddHouse() {
               accept="image/*"
               onChange={handleImageChange}
             />
+            {formErrors.image && (
+            <div className="text-red-500 text-sm">{formErrors.image}</div>
+            )}
           </div>
           <button
             className="bg-button-color hover:bg-button-hover-color text-white font-bold py-2 px-4 rounded"
