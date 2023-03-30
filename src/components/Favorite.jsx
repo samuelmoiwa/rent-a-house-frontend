@@ -14,18 +14,12 @@ function Favorite() {
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
-  
+
+  // Update local state with favorite items when currentUser data changes
   useEffect(() => {
     if (currentUser.currentUser) {
       setFavorites(currentUser.currentUser.favorites || []);
     }
   }, [currentUser]);
-console.log(favorites)
-  return (
-    <div>
-      
-    </div>
-  )
-}
 
 export default Favorite
