@@ -7,6 +7,7 @@ import loginSlice from './auth/loginSlice';
 import logoutSlice from './auth/logoutSlice';
 import addHouseSlice from './house/addHouseSlice';
 import displayHouseSlice from './house/displayHouseSlice';
+import deleteHouseSlice from './house/deleteHouseSlice';
 
 // root Reducer
 const rootReducer = combineReducers({
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   logout: logoutSlice,
   addHouse: addHouseSlice,
   displayHouse: displayHouseSlice,
+  deleteHouse: deleteHouseSlice,
 
 });
 

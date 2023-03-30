@@ -47,3 +47,5 @@ export const deleteHouse = () => async (dispatch) => {
         throw error;
     }
 }
+
+export default deleteHouseSlice.reducer;
