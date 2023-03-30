@@ -6,7 +6,6 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchHouses } from '../redux/house/displayHouseSlice';
-import NavBar from './navBar/NavBar';
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -19,7 +18,6 @@ const MainPage = () => {
 
   // Check if houses property exists before trying to access it
   const houses = displayHouse && displayHouse.houses;
-  console.log(houses);
 
   return (
     <div className="container mx-auto xl:ml-52 p-10 ">
