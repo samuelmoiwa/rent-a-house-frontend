@@ -8,6 +8,8 @@ import logoutSlice from './auth/logoutSlice';
 import addHouseSlice from './house/addHouseSlice';
 import displayHouseSlice from './house/displayHouseSlice';
 import AddfavoriteSlice from './favorite/addFavoriteSlice';
+import deleteHouseSlice from './house/deleteHouseSlice';
+import currentUserSlice from './user/currentUserSlice';
 
 // root Reducer
 const rootReducer = combineReducers({
@@ -18,7 +20,8 @@ const rootReducer = combineReducers({
   addHouse: addHouseSlice,
   displayHouse: displayHouseSlice,
   addFavorites: AddfavoriteSlice,
-
+  deleteHouse: deleteHouseSlice,
+  currentUser: currentUserSlice,
 });
 
 // Redux store
