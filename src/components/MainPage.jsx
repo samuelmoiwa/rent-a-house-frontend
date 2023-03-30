@@ -21,7 +21,7 @@ const MainPage = () => {
   console.log(houses);
 
   return (
-    <div className="container mx-auto xl:ml-52 ">
+    <div className="container mx-auto xl:ml-52 p-10 ">
       <h1 className="text-3xl font-bold mb-8 text-center">Houses for Rent</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {houses && houses.map((house) => (
