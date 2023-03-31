@@ -26,21 +26,21 @@ function Favorites() {
   // Render favorite items or message
   return (
     <div>
-    {favorites.length > 0 ? (
-      <ul>
-        {favorites.map((favorite) => (
-          <div key={favorite.id}>
-            <li>{favorite.house_title}</li>
-            <li>
-              <img src={favorite.image_url} width={80} height={50} />
-            </li>
-          </div>
-        ))}
-      </ul>
-    ) : (
+      {favorites.length > 0 ? (
+        <ul>
+          {favorites.map((favorite) => (
+            <div key={favorite.id}>
+              <li>{favorite.house_title}</li>
+              <li>
+                <img src={favorite.image_url} width={80} height={50} />
+              </li>
+            </div>
+          ))}
+        </ul>
+      ) : (
         <p>You have no favorites added.</p>
-    )}
-  </div>
+      )}
+    </div>
   );
 }
 
