@@ -62,7 +62,7 @@ export const addFavorite = (houseId, houseIdData) => async (dispatch) => {
           'Content-Type': 'application/json',
           Authorization: accessToken,
         },
-      }
+      },
     );
     dispatch(addFavoriteSuccess(response.data));
   } catch (error) {

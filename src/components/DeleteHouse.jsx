@@ -7,9 +7,8 @@ const DeleteHouse = ({ houseId, onSuccess }) => {
 
   const handleDeleteClick = () => {
     if (window.confirm('Are you sure you want to delete this house?')) {
-        dispatch(deleteHouse(houseId));
-         
-      }
+      dispatch(deleteHouse(houseId));
+    }
   };
 
   return (
