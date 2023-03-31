@@ -22,7 +22,7 @@ function NavBar() {
         <div className="w-44 pt-8 flex justify-center items-center"><img src={logo} alt="logo-image" className="w-32" /></div>
         <ul className="mt-30 font-montserrat font-bold text-left text-font-color pl-2">
           <li className="my-7"><NavLink to="/">Houses</NavLink></li>
-          <li className="my-7"><NavLink to="/reserve">My favorites</NavLink></li>
+          <li className="my-7"><NavLink to="/favorites">My favorites</NavLink></li>
           <li className="my-7"><NavLink to="/addhouse">Add house</NavLink></li>
           <li className="my-7"><NavLink to="/deletehouse">Delete house</NavLink></li>
           <li className="my-7">
@@ -37,7 +37,7 @@ function NavBar() {
           <div onClick={() => setNav(!nav)} className="m-4"><FaTimes size={30} color="orange" /></div>
           <ul className="flex-col font-montserrat font-bold text-font-color">
             <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/">Houses</NavLink></li>
-            <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/reserve">My favorites</NavLink></li>
+            <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/favorites">My favorites</NavLink></li>
             <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/addhouse">Add house</NavLink></li>
             <li onClick={() => setNav(!nav)} className="my-5"><NavLink to="/deletehouse">Delete house</NavLink></li>
             <li onClick={() => setNav(!nav)} className="my-5">
