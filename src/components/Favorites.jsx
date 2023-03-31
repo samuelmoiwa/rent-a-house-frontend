@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCurrentUser } from '../redux/user/currentUserSlice';
 
-function Favorite() {
+function Favorites() {
   // Initialize Redux hooks
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.currentUser);
@@ -21,21 +21,27 @@ function Favorite() {
       setFavorites(currentUser.currentUser.favorites || []);
     }
   }, [currentUser]);
+  console.log(favorites);
 
   // Render favorite items or message
   return (
     <div>
-      {favorites.length === 0 ? (
-        <p>No favorites found.</p>
-      ) : (
-        <ul>
-          {favorites.map((favorite) => (
-            <li key={favorite.id}>{favorite.name}</li>
-          ))}
-        </ul>
-      )}
-    </div>
+    {favorites.length > 0 ? (
+      <ul>
+        {favorites.map((favorite) => (
+          <div key={favorite.id}>
+            <li>{favorite.house_title}</li>
+            <li>
+              <img src={favorite.image_url} width={80} height={50} />
+            </li>
+          </div>
+        ))}
+      </ul>
+    ) : (
+        <p>You have no favorites added.</p>
+    )}
+  </div>
   );
 }
 
-export default Favorite;
+export default Favorites;
