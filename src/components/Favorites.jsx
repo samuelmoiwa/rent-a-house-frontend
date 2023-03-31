@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCurrentUser } from '../redux/user/currentUserSlice';
+import NavBar from './navBar/NavBar';
 
 function Favorites() {
   // Initialize Redux hooks
@@ -25,22 +26,26 @@ function Favorites() {
 
   // Render favorite items or message
   return (
-    <div>
-      {favorites.length > 0 ? (
-        <ul>
-          {favorites.map((favorite) => (
-            <div key={favorite.id}>
-              <li>{favorite.house_title}</li>
-              <li>
-                <img src={favorite.image_url} width={80} height={50} />
-              </li>
-            </div>
-          ))}
-        </ul>
-      ) : (
-        <p>You have no favorites added.</p>
-      )}
-    </div>
+    <>
+      <NavBar />
+      <div className="py-4 xl:ml-52 p-10">
+        {favorites.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {favorites.map((favorite) => (
+              <div className="bg-white rounded-lg shadow-md overflow-hidden" key={favorite.id}>
+                <img className="w-full h-52 object-cover" src={favorite.image_url} alt={favorite.house_title} />
+                <div className="p-4">
+                  <h3 className="text-lg font-medium mb-2">{favorite.house_title}</h3>
+                  <p className="text-gray-500">{favorite.house_location}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="text-gray-500">You have no favorites added.</p>
+        )}
+      </div>
+    </>
   );
 }
 
