@@ -30,6 +30,8 @@ export default function AddHouse() {
     // Validate description
     if (!formData.description) {
       errors.description = 'Description is required';
+    } else if (formData.description.length < 25) {
+      errors.description = 'Description must not be less than 25 characters';
     }
 
     // Validate price
@@ -60,6 +62,8 @@ export default function AddHouse() {
     setFormData({ ...formData, image: event.target.files[0] });
   };
 
+  const [successMessage, setSuccessMessage] = useState('');
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -68,7 +72,28 @@ export default function AddHouse() {
       const formDataWithHouse = {
         house: formData,
       };
-      dispatch(addHouse(formDataWithHouse));
+      dispatch(addHouse(formDataWithHouse))
+        .then(() => {
+        // Clear form data and errors
+          setFormData({
+            title: '',
+            description: '',
+            price: '',
+            image: null,
+          });
+          setFormErrors({
+            title: '',
+            description: '',
+            price: '',
+            image: null,
+          });
+          // Show success message
+          setSuccessMessage('House added successfully!');
+          setTimeout(() => setSuccessMessage(''), 3000);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   };
 
@@ -77,6 +102,11 @@ export default function AddHouse() {
       <NavBar />
       <div className="container mx-auto p-4">
         <h1 className="text-3xl font-bold mb-4 text-center">Add House Form</h1>
+        {successMessage && (
+          <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4 text-center">
+            <p className="font-bold">{successMessage}</p>
+          </div>
+        )}
         <form className="max-w-lg mx-auto" onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="mb-4">
             <label className="block text-gray-700 font-bold mb-2" htmlFor="title">
