@@ -42,7 +42,7 @@ export default function Login() {
       const userData = { user: { email: user.email, password: user.password } };
       try {
         await dispatch(userLogin(userData));
-        navigate('/');
+        navigate('/home');
       } catch (error) {
         setLoginError('Invalid email or password');
       }

@@ -6,11 +6,10 @@ import { fetchHouses } from '../redux/house/displayHouseSlice';
 import AddFavorite from './AddFavorite';
 import NavBar from './navBar/NavBar';
 
-
 const HouseDetails = () => {
   const dispatch = useDispatch();
   const displayHouse = useSelector((state) => state.displayHouse);
- 
+
   const { id } = useParams();
 
   useEffect(() => {

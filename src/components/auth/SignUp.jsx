@@ -29,7 +29,7 @@ export default function Signup() {
     const userData = { user: { email: data.email, password: data.password } };
     try {
       await dispatch(userRegister(userData));
-      navigate('/');
+      navigate('/home');
     } catch (error) {
       if (error.response && error.response.status === 422) {
         setSignUpError('user already exists');
