@@ -1,4 +1,3 @@
-/* eslint-disable react/button-has-type */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -9,6 +8,7 @@ import NavBar from './navBar/NavBar';
 const HouseDetails = () => {
   const dispatch = useDispatch();
   const displayHouse = useSelector((state) => state.displayHouse);
+  const addFavorites = useSelector((state) => state.addFavorites);
 
   const { id } = useParams();
 
@@ -25,6 +25,8 @@ const HouseDetails = () => {
       <NavBar />
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-6 p-10 ">
         <h1 className="text-center text-2xl font-bold mb-5"> House Details</h1>
+        {addFavorites.status === 'success' && <p className="text-green-500">{addFavorites.message}</p>}
+        {addFavorites.status === 'error' && <p className="text-red-500">{addFavorites.message}</p>}
         {houseDetails ? (
           <div className="bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-2xl">
             <img src={`http://localhost:3000${houseDetails.image_url}`} alt={houseDetails.title} className="w-full h-96 object-cover" />
@@ -38,7 +40,6 @@ const HouseDetails = () => {
           <p>Loading...</p>
         )}
       </div>
-
     </>
   );
 };
