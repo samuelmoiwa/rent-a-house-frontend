@@ -5,14 +5,15 @@ import React from 'react';
 import MainPage from './MainPage';
 import NavBar from './navBar/NavBar';
 import houseHero from '../images/house_hero.svg';
+import Footer from './Footer';
 
 const Home = () => (
   <div>
     <NavBar />
 
-    <section className="dark:bg-gray-100 dark:text-gray-800 ">
+    <section className="dark:bg-gray-100 dark:text-gray-800 p-4 w-full">
       <div className="container flex flex-col justify-center p-6 mx-auto
-      sm:py-12 lg:py-24 lg:flex-row lg:justify-between xl:ml-52 p-10"
+      sm:py-12 lg:py-24 lg:flex-row lg:justify-between xl:ml-52"
       >
         <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
           <h1 className="text-5xl font-bold leading-none sm:text-6xl">
@@ -39,6 +40,8 @@ const Home = () => (
     </section>
 
     <MainPage />
+
+    <Footer />
   </div>
 );
 
