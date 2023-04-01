@@ -57,6 +57,8 @@
 > Add a link to your deployed project.
 
 - [Live Demo Link](https://yourdeployedapplicationlink.com)
+
+> Add a link to your backend project.
 - [Backend Link](https://github.com/kessio/Rent-a-house-backend)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
