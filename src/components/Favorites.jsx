@@ -7,6 +7,7 @@ function Favorites() {
   // Initialize Redux hooks
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.currentUser);
+  const addFavorites = useSelector((state) => state.addFavorites);
 
   // Initialize local state for favorite items
   const [favorites, setFavorites] = useState([]);
@@ -29,6 +30,9 @@ function Favorites() {
     <>
       <NavBar />
       <div className="py-4 xl:ml-52 p-10">
+        {addFavorites.status === 'success' && <p className="text-green-500">{addFavorites.message}</p>}
+        {addFavorites.status === 'error' && <p className="text-red-500">{addFavorites.message}</p>}
+
         {favorites.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {favorites.map((favorite) => (

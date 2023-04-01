@@ -8,7 +8,7 @@ function LogoutButton() {
   const navigate = useNavigate();
   const handleLogout = () => {
     // Navigate to the login page
-    navigate('/Login');
+    navigate('/');
     // Remove the session token from local storage
     // localStorage.removeItem('access_token');
     // Dispatch the logoutSuccess action to update the authentication state

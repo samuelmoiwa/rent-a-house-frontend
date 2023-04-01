@@ -21,7 +21,11 @@ const MainPage = () => {
 
   return (
     <div className="container mx-auto xl:ml-52 p-10 ">
-      <h1 className="text-3xl font-bold mb-8 text-center">Houses for Rent</h1>
+      <h1 className="text-3xl font-bold mb-2 text-center">Houses for Rent</h1>
+
+      <div className="w-full flex items-center justify-center mb-8">
+        <div className="h-2 w-16 bg-button-color center"> </div>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {houses && houses.map((house) => (
           <div className="bg-white rounded-lg shadow-lg p-4" key={house.id}>
