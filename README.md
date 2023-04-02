@@ -52,11 +52,7 @@
 
 <!-- LIVE DEMO -->
 
-## 🚀 Live Demo <a name="live-demo"></a>
-
-> Add a link to your deployed project.
-
-- [Live Demo Link](https://yourdeployedapplicationlink.com)
+## 🚀 Link to Backend <a name="Backend-link"></a>
 
 > Add a link to your backend project.
 - [Backend Link](https://github.com/kessio/Rent-a-house-backend)
