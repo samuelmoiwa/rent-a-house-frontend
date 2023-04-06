@@ -38,7 +38,7 @@ export const userLogout = () => async (dispatch) => {
     // Dispatch the logoutSuccess action to update the authentication state
     dispatch(logoutSuccess());
   } catch (error) {
-    console.log(error);
+   throw(error);
   }
 };
 

@@ -8,7 +8,6 @@ const AddFavorite = ({ houseId }) => {
 
   const handleAddFavorites = () => {
     dispatch(addFavorite(houseId, houseIdData));
-    console.log(houseIdData)
   };
  
   return (

@@ -23,8 +23,6 @@ const Favorites = () => {
       setFavorites(currentUser.currentUser.favorites || []);
     }
   }, [currentUser]);
-  console.log(favorites);
-
   // Render favorite items or message
   return (
     <>
