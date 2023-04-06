@@ -12,7 +12,7 @@ import { userLogin } from '../../redux/auth/loginSlice';
 import logo from '../../images/logo/logo.png';
 import authBackgroundImage from '../../images/auth_background_image.png';
 
-export default function Login() {
+const Login = () => {
   const [user, setUser] = useState({});
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
@@ -162,3 +162,4 @@ export default function Login() {
     </div>
   );
 }
+export default Login

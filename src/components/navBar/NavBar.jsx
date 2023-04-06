@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/Logout';
 import logo from '../../images/logo/logo.png';
 
-function NavBar() {
+const NavBar = () => {
   const [nav, setNav] = useState(false);
 
   return (

@@ -11,7 +11,7 @@ import AddFavorite from './components/AddFavorite';
 import MyHouses from './components/MyHouses';
 import Favorites from './components/Favorites';
 
-function App() {
+const App = () => {
   return (
     <Routes>
       <Route path="/home" element={<Home />} />

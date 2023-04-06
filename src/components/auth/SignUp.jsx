@@ -12,7 +12,7 @@ import { userRegister } from '../../redux/auth/registerSlice';
 import logo from '../../images/logo/logo.png';
 import authBackgroundImage from '../../images/auth_background_image.png';
 
-export default function Signup() {
+ const Signup = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [signUpError, setSignUpError] = useState('');
@@ -165,3 +165,4 @@ export default function Signup() {
     </div>
   );
 }
+export default Signup;

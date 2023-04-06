@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { addHouse } from '../redux/house/addHouseSlice';
 import NavBar from './navBar/NavBar';
 
-export default function AddHouse() {
+ const AddHouse = () => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -182,3 +182,4 @@ export default function AddHouse() {
     </>
   );
 }
+export default AddHouse;

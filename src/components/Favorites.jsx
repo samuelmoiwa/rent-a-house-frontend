@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getCurrentUser } from '../redux/user/currentUserSlice';
 import NavBar from './navBar/NavBar';
 
-function Favorites() {
+const Favorites = () => {
   // Initialize Redux hooks
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.currentUser);
