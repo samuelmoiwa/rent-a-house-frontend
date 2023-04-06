@@ -25,21 +25,17 @@ const logoutSlice = createSlice({
 
 export const { loginSuccess, logoutSuccess } = logoutSlice.actions;
 export const userLogout = () => async (dispatch) => {
-  try {
-    // Send a DELETE request to the server to delete the session token
-    await axios.delete(apiUrl, {
-      headers: {
-        Authorization: localStorage.getItem('access_token'),
-      },
-    });
+  // Send a DELETE request to the server to delete the session token
+  await axios.delete(apiUrl, {
+    headers: {
+      Authorization: localStorage.getItem('access_token'),
+    },
+  });
 
-    // Remove the access token from local storage
-    localStorage.removeItem('access_token');
-    // Dispatch the logoutSuccess action to update the authentication state
-    dispatch(logoutSuccess());
-  } catch (error) {
-   throw(error);
-  }
+  // Remove the access token from local storage
+  localStorage.removeItem('access_token');
+  // Dispatch the logoutSuccess action to update the authentication state
+  dispatch(logoutSuccess());
 };
 
 export default logoutSlice.reducer;

@@ -11,20 +11,18 @@ import AddFavorite from './components/AddFavorite';
 import MyHouses from './components/MyHouses';
 import Favorites from './components/Favorites';
 
-const App = () => {
-  return (
-    <Routes>
-      <Route path="/home" element={<Home />} />
-      <Route path="/" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/logout" element={<Logout />} />
-      <Route path="/addhouse" element={<AddHouse />} />
-      <Route path="/deletehouse" element={<MyHouses />} />
-      <Route path="house-details/:id" element={<HouseDetails />} />
-      <Route path="/addfavorite" element={<AddFavorite />} />
-      <Route path="/favorites" element={<Favorites />} />
-    </Routes>
-  );
-}
+const App = () => (
+  <Routes>
+    <Route path="/home" element={<Home />} />
+    <Route path="/" element={<Login />} />
+    <Route path="/signup" element={<Signup />} />
+    <Route path="/logout" element={<Logout />} />
+    <Route path="/addhouse" element={<AddHouse />} />
+    <Route path="/deletehouse" element={<MyHouses />} />
+    <Route path="house-details/:id" element={<HouseDetails />} />
+    <Route path="/addfavorite" element={<AddFavorite />} />
+    <Route path="/favorites" element={<Favorites />} />
+  </Routes>
+);
 
 export default App;
